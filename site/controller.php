@@ -32,19 +32,27 @@ class CallBackController extends JController
     {
         // Check for request forgeries
         JRequest::checkToken() or jexit( 'Invalid Token' );
-        $data['name'] = JRequest::getString('name');
-        $data['phone'] = JRequest::getString('phone');
+        $phone = JRequest::getString('phone');
+        preg_match("/\+7\(([0-9]{3})\) ([0-9]{3})-([0-9]{2})-([0-9]{2})/", $phone, $regs);
+
+        $data['name'] = htmlspecialchars(JRequest::getString('name'));
+        $data['telnum'] = $regs[1].$regs[2].$regs[3].$regs[4];
         $data['user_id'] = JRequest::getInt('user_id');
-        
+        $data['time_create'] = date('Y-m-d H:i:s');
         $model = new CallBackModelCallback;
         if($model->save($data))
         {
-            echo JTEXT::_('DATA_SAVED');
+            $msg = JTEXT::_('COM_CALLBACK_DATA_SAVED');
+//            $tmpl = 'error';
         }
         else 
         {
-            echo JTEXT::_('ERROR_SAVE_DATA');
+            $msg = JTEXT::_('COM_CALLBACK_ERROR_SAVE_DATA');
+//            $tmpl = 'success';
         }
-        exit;
+        // Check the table in so it can be edited.... we are done with it anyway
+//        $link = 'index.php?option=com_callback&tmpl='.$tmpl;
+        $link = 'index.php';
+        $this->setRedirect($link, $msg);
     }
 }

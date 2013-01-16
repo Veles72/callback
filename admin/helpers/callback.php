@@ -12,8 +12,7 @@ abstract class CallBackHelper
 	 */
 	public static function addSubmenu($submenu) 
 	{
-		JSubMenuHelper::addEntry(JText::_('COM_CALLBACK_SUBMENU_MESSAGES'), 'index.php?option=com_callback', $submenu == 'messages');
-		JSubMenuHelper::addEntry(JText::_('COM_CALLBACK_SUBMENU_CATEGORIES'), 'index.php?option=com_categories&view=categories&extension=com_callback', $submenu == 'categories');
+		JSubMenuHelper::addEntry(JText::_('COM_CALLBACK_CALLBACKS'), 'index.php?option=com_callback', $submenu == 'messages');
 		// set some global property
 		$document = JFactory::getDocument();
 		$document->addStyleDeclaration('.icon-48-callback {background-image: url(../media/com_callback/images/tux-48x48.png);}');

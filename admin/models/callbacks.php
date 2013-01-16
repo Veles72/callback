@@ -19,9 +19,9 @@ class CallBackModelCallBacks extends JModelList
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		// Select some fields
-		$query->select('id,greeting');
+		$query->select('*');
 		// From the hello table
-		$query->from('#__callback');
+		$query->from('#__callback_callback');
 		return $query;
 	}
 }

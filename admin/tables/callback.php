@@ -29,14 +29,35 @@ class CallBackTableCallBack extends JTable
 	 */
 	public function bind($array, $ignore = '') 
 	{
-		if (isset($array['params']) && is_array($array['params'])) 
-		{
-			// Convert the params field to a string.
-			$parameter = new JRegistry;
-			$parameter->loadArray($array['params']);
-			$array['params'] = (string)$parameter;
-		}
-		return parent::bind($array, $ignore);
+            // Конвертируем номер телефона
+            if (isset($array['telnum']) AND substr($array['telnum'],1,3 == '+7(')) 
+            {
+                preg_match("/\+7\(([0-9]{3})\) ([0-9]{3})-([0-9]{2})-([0-9]{2})/", $array['telnum'], $regs);
+                $array['telnum'] = $regs[1].$regs[2].$regs[3].$regs[4];
+            }
+            // Конвертируем дату и время создания
+            if (isset($array['time_create']) AND substr_count('.',$array['time_create']) == 3) 
+            {
+                preg_match("/([0-9]{2}).([0-9]{2}).([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/", $array['time_create'], $regs);
+                $array['time_create'] = $regs[3].'-'.$regs[2].'-'.$regs[1].' '.$regs[4].':'.$regs[5].':'.$regs[6];
+            }
+            // Конвертируем дату и время закрытия
+            if (isset($array['time_create']) AND substr_count('.',$array['time_close']) == 3) 
+            {
+                preg_match("/([0-9]{2}).([0-9]{2}).([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/", $array['time_close'], $regs);
+                $array['time_create'] = $regs[3].'-'.$regs[2].'-'.$regs[1].' '.$regs[4].':'.$regs[5].':'.$regs[6];
+            }
+            // Конвертируем наименование клиента
+            if (isset($array['name'])) 
+            {
+                $array['name'] = htmlspecialchars(JRequest::getString($array['name']));
+            }
+            // Конвертируем наименование темы
+            if (isset($array['theme'])) 
+            {
+                $array['theme'] = htmlspecialchars(JRequest::getString($array['theme']));
+            }
+            return parent::bind($array, $ignore);
 	}
  
 	/**
@@ -51,11 +72,25 @@ class CallBackTableCallBack extends JTable
 	{
 		if (parent::load($pk, $reset)) 
 		{
-			// Convert the params field to a registry.
-			$params = new JRegistry;
-			$params->loadJSON($this->params);
-			$this->params = $params;
-			return true;
+                    // Конвертируем номер телефона
+                    preg_match("/([0-9]{3})([0-9]{3})([0-9]{2})([0-9]{2})/", $this->telnum, $regs);
+                    if(count($regs) == 5)
+                    {
+                        $this->telnum = '+7('.$regs[1].') '.$regs[2].'-'.$regs[3].'-'.$regs[4];
+                    }
+                    // Конвертируем дату и время создания
+                    preg_match("/([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/", $this->time_create, $regs);
+                    if(count($regs) == 7)
+                    {
+                        $this->time_create = $regs[3].'.'.$regs[2].'.'.$regs[1].' '.$regs[4].':'.$regs[5].':'.$regs[6];
+                    }
+                    // Конвертируем дату и время закрытия
+                    preg_match("/([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/", $this->time_close, $regs);
+                    if(count($regs) == 7)
+                    {
+                        $this->time_close = $regs[3].'.'.$regs[2].'.'.$regs[1].' '.$regs[4].':'.$regs[5].':'.$regs[6];
+                    }
+                    return true;
 		}
 		else
 		{

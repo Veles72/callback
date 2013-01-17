@@ -17,7 +17,7 @@ class CallBackViewCallBack extends JView
 	public function display($tpl = null) 
 	{
 		// get the Data
-		$form = $this->get('Form');
+//		$form = $this->get('Form');
 		$item = $this->get('Item');
 		$script = $this->get('Script');
  
@@ -28,7 +28,7 @@ class CallBackViewCallBack extends JView
 			return false;
 		}
 		// Assign the Data
-		$this->form = $form;
+//		$this->form = $form;
 		$this->item = $item;
 		$this->script = $script;
  

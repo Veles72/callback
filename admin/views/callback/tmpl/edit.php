@@ -1,43 +1,15 @@
 <?php
 // No direct access
 defined('_JEXEC') or die('Restricted access');
-JHtml::_('behavior.tooltip');
-JHtml::_('behavior.formvalidation');
-$params = $this->form->getFieldsets('params');
+$form_action = JRoute::_('index.php?option=com_callback&layout=edit&id=' . (int) $this->item->id);
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_callback&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="callback-form" class="form-validate">
- 
-	<div class="width-60 fltlft">
-		<fieldset class="adminform">
-			<legend><?php echo JText::_( 'COM_CALLBACK_CALLBACK_DETAILS' ); ?></legend>
-			<ul class="adminformlist">
-<?php foreach($this->form->getFieldset('details') as $field): ?>
-				<li><?php echo $field->label;echo $field->input;?></li>
-<?php endforeach; ?>
-			</ul>
-	</div>
- 
-	<div class="width-40 fltrt">
-		<?php echo JHtml::_('sliders.start', 'callback-slider'); ?>
-<?php foreach ($params as $name => $fieldset): ?>
-		<?php echo JHtml::_('sliders.panel', JText::_($fieldset->label), $name.'-params');?>
-	<?php if (isset($fieldset->description) && trim($fieldset->description)): ?>
-		<p class="tip"><?php echo $this->escape(JText::_($fieldset->description));?></p>
-	<?php endif;?>
-		<fieldset class="panelform" >
-			<ul class="adminformlist">
-	<?php foreach ($this->form->getFieldset($name) as $field) : ?>
-				<li><?php echo $field->label; ?><?php echo $field->input; ?></li>
-	<?php endforeach; ?>
-			</ul>
-		</fieldset>
-<?php endforeach; ?>
- 
-		<?php echo JHtml::_('sliders.end'); ?>
-	</div>
- 
-	<div>
-		<input type="hidden" name="task" value="callback.edit" />
-		<?php echo JHtml::_('form.token'); ?>
-	</div>
+<form action="<?php echo $form_action ?>" method="post" name="adminForm" id="callback-form" class="form-validate">
+
+    <div class="width-60 fltlft">
+            <?php var_dump($this->item)?>
+    </div>
+    <div>
+        <input type="hidden" name="task" value="callback.edit" />
+        <?php echo JHtml::_('form.token'); ?>
+    </div>
 </form>

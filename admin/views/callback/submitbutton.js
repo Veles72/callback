@@ -28,7 +28,7 @@ Joomla.submitbutton = function(task)
 		}
 		else
 		{
-			alert(Joomla.JText._('COM_HELLOWORLD_HELLOWORLD_ERROR_UNACCEPTABLE','Some values are unacceptable'));
+			alert(Joomla.JText._('COM_CALLBACK_CALLBACK_ERROR_UNACCEPTABLE','Проверьте введенные данные'));
 			return false;
 		}
 	}

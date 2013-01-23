@@ -47,6 +47,7 @@ class CallBackModelCallBack extends JModelAdmin
 	 */
 	public function getForm($data = array(), $loadData = true) 
 	{
+//            var_dump(getForm($data = array(), $loadData = true) );exit;
 		// Get the form.
 		$form = $this->loadForm('com_callback.callback', 'callback', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form)) 

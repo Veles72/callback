@@ -50,12 +50,12 @@ class CallBackTableCallBack extends JTable
             // Конвертируем наименование клиента
             if (isset($array['name'])) 
             {
-                $array['name'] = htmlspecialchars(JRequest::getString($array['name']));
+                $array['name'] = htmlspecialchars($array['name']);
             }
             // Конвертируем наименование темы
             if (isset($array['theme'])) 
             {
-                $array['theme'] = htmlspecialchars(JRequest::getString($array['theme']));
+                $array['theme'] = htmlspecialchars($array['theme']);
             }
             return parent::bind($array, $ignore);
 	}
@@ -90,27 +90,14 @@ class CallBackTableCallBack extends JTable
                     {
                         $this->time_close = $regs[3].'.'.$regs[2].'.'.$regs[1].' '.$regs[4].':'.$regs[5].':'.$regs[6];
                     }
-                    return true;
 		}
 		else
 		{
 			return false;
 		}
+                return true;
 	}
-	/**
-	 * Method to compute the default name of the asset.
-	 * The default name is in the form `table_name.id`
-	 * where id is the value of the primary key of the table.
-	 *
-	 * @return	string
-	 * @since	1.6
-	 */
-	protected function _getAssetName()
-	{
-		$k = $this->_tbl_key;
-		return 'com_callback.name.'.(int) $this->$k;
-	}
- 
+
 	/**
 	 * Method to return the title to use for the asset table.
 	 *
@@ -122,16 +109,4 @@ class CallBackTableCallBack extends JTable
 		return $this->name;
 	}
  
-	/**
-	 * Get the parent asset id for the record
-	 *
-	 * @return	int
-	 * @since	1.6
-	 */
-	protected function _getAssetParentId()
-	{
-		$asset = JTable::getInstance('Asset');
-		$asset->loadByName('com_callback');
-		return $asset->id;
-	}
 }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="new"
+		addfieldpath="/administrator/components/com_callbacks/models/fields"
+	>
+		<field name="id" type="text" default="0"
+			readonly="true" class="readonly"
+			label="JGLOBAL_FIELD_ID_LABEL" 	description ="JGLOBAL_FIELD_ID_DESC" 
+                />
+                <field name="status_id" type="list"
+			label="JSTATUS" description="COM_CALLBACKS_FIELD_STATE_DESC"
+			class="inputbox" size="1" default="1" >
+			<option value="1">ZAKAZAN</option>
+			<option value="0">ISPOLNEN</option>
+		</field>
+		<field name="name" 
+                        type="text"
+			label="COM_CALLBACKS_FIELD_NAME_LABEL" 	
+                        description ="COM_CALLBACKS_FIELD_NAME_DESC" 
+			class="inputbox"
+			size="40"
+                />
+		<field name="telnum" 
+                        type="text" 
+			label="JFIELD_TELNUM_LABEL"
+			description="COM_CALLBACKS_FIELD_TELNUM_DESC" 
+                        class="inputbox"
+			size="20"
+                />
+                <field name="time_create" type="calendar"
+			label="COM_CALLBACKS_FIELD_CREATED_LABEL" description="COM_CALLBACKS_FIELD_CLOSE_DESC"
+			class="inputbox" size="22" format="%d.%m.%Y %H:%M:%S"
+                />
+                <field name="time_close" type="calendar"
+			label="COM_CALLBACKS_FIELD_CLOSE_LABEL" description="COM_CALLBACKS_FIELD_CREATED_DESC"
+			class="inputbox" size="22" format="%d.%m.%Y %H:%M:%S"
+                />
+		<field name="theme" type="text" class="inputbox"
+			size="40" label="COM_CALLBACKS_FIELD_THEME_LABEL"
+			description="COM_CALLBACKS_FIELD_THEME_DESC" 
+                />
+		<field name="text" type="textarea" class="inputbox"
+			rows="3" cols="30" label="JGLOBAL_DESCRIPTION"
+			description="COM_CALLBACKS_FIELD_DESCRIPTION_DESC" 
+                />
+		<field name="user_id"
+			type="user"
+			label="COM_CONTACT_FIELD_LINKED_USER_LABEL"
+			description="COM_CONTACT_FIELD_LINKED_USER_DESC"
+		/>
+	</fieldset>
+	<fieldset name="edit"
+		addfieldpath="/administrator/components/com_callbacks/models/fields"
+	>
+		<field name="id" type="text" default="0"
+			readonly="true" class="readonly"
+			label="JGLOBAL_FIELD_ID_LABEL" 	description ="JGLOBAL_FIELD_ID_DESC" 
+                />
+                <field name="status_id" type="list"
+			label="JSTATUS" description="COM_CALLBACKS_FIELD_STATE_DESC"
+			class="inputbox" size="1" default="1" >
+			<option value="1">ZAKAZAN</option>
+			<option value="0">ISPOLNEN</option>
+		</field>
+		<field name="name" 
+                        type="text"
+			label="COM_CALLBACKS_FIELD_NAME_LABEL" 	
+                        description ="COM_CALLBACKS_FIELD_NAME_DESC" 
+			class="inputbox"
+			size="40"
+                />
+		<field name="telnum" 
+                        type="text" 
+			label="JFIELD_TELNUM_LABEL"
+			description="COM_CALLBACKS_FIELD_TELNUM_DESC" 
+                        class="inputbox"
+			size="20"
+                />
+                <field name="time_create" type="calendar"
+			label="COM_CALLBACKS_FIELD_CREATED_LABEL" description="COM_CALLBACKS_FIELD_CLOSE_DESC"
+			class="inputbox" size="22" format="%d.%m.%Y %H:%M:%S"
+                />
+                <field name="time_close" type="calendar"
+			label="COM_CALLBACKS_FIELD_CLOSE_LABEL" description="COM_CALLBACKS_FIELD_CREATED_DESC"
+			class="inputbox" size="22" format="%d.%m.%Y %H:%M:%S"
+                />
+		<field name="theme" type="text" class="inputbox"
+			size="40" label="COM_CALLBACKS_FIELD_THEME_LABEL"
+			description="COM_CALLBACKS_FIELD_THEME_DESC" 
+                />
+		<field name="text" type="textarea" class="inputbox"
+			rows="3" cols="30" label="JGLOBAL_DESCRIPTION"
+			description="COM_CALLBACKS_FIELD_DESCRIPTION_DESC" 
+                />
+		<field name="user_id"
+			type="user"
+			label="COM_CONTACT_FIELD_LINKED_USER_LABEL"
+			description="COM_CONTACT_FIELD_LINKED_USER_DESC"
+		/>
+	</fieldset>
+</form>

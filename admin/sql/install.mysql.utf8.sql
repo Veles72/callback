@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `#__callback_callback`;
+
 CREATE TABLE IF NOT EXISTS `#__callback_callback` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ИД записи',
   `status_id` int(11) NOT NULL COMMENT ' ИД статуса звонка',
@@ -12,16 +14,8 @@ CREATE TABLE IF NOT EXISTS `#__callback_callback` (
   KEY `status_id` (`status_id`,`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Дамп даних таблиці `callback_callback`
---
 
-
--- --------------------------------------------------------
-
---
--- Структура таблиці `callback_status`
---
+DROP TABLE IF EXISTS `#__callback_status`;
 
 CREATE TABLE IF NOT EXISTS `#__callback_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ИД статуса звонка',

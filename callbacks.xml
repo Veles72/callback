@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="1.7.0" method="upgrade">
-	<name>CALLBACK</name>
+	<name>com_callback</name>
 	<creationDate>January 2013</creationDate>
 	<copyright>Copyright (C) 2013 Konstantin Ovcharenko. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
@@ -29,9 +29,14 @@
 		<folder>language</folder>
                 <folder>views</folder>
 	</files>
+	<media destination="com_callback" folder="media">
+		<filename>index.html</filename>
+		<folder>css</folder>
+		<folder>images</folder>
+	</media>
 
 	<administration>
-		<menu>COM_CALLBACK</menu>
+		<menu img="class:callback">com_callback</menu>
 		<files folder="admin">
 			<filename>access.xml</filename>
 			<filename>callback.php</filename>

@@ -98,6 +98,7 @@ class CallBackViewCallBack extends JView
 		$document->setTitle($isNew ? JText::_('COM_CALLBACK_CALLBACK_CREATING') : JText::_('COM_CALLBACK_CALLBACK_EDITING'));
 		$document->addScript(JURI::root() . $this->script);
 		$document->addScript(JURI::root() . "/administrator/components/com_callback/views/callback/submitbutton.js");
+                $document->addScript(JURI::root().'components/com_callback/assets/jquery.maskedinput-1.3.min.js');
 		JText::script('COM_CALLBACK_CALLBACK_ERROR_UNACCEPTABLE');
 	}
 }

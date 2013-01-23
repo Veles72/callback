@@ -2,34 +2,14 @@ Joomla.submitbutton = function(task)
 {
 	if (task == '')
 	{
-		return false;
+            return false;
 	}
 	else
 	{
-		var isValid=true;
-		var action = task.split('.');
-		if (action[1] != 'cancel' && action[1] != 'close')
-		{
-			var forms = $$('form.form-validate');
-			for (var i=0;i<forms.length;i++)
-			{
-				if (!document.formvalidator.isValid(forms[i]))
-				{
-					isValid = false;
-					break;
-				}
-			}
-		}
- 
-		if (isValid)
-		{
-			Joomla.submitform(task);
-			return true;
-		}
-		else
-		{
-			alert(Joomla.JText._('COM_CALLBACK_CALLBACK_ERROR_UNACCEPTABLE','Проверьте введенные данные'));
-			return false;
-		}
+            Joomla.submitform(task);
 	}
 }
+jQuery(document).ready(function($){
+   $.mask.definitions['#']='[9]';  
+   $("#jform_telnum").mask("+7(#99) 999-99-99");
+});

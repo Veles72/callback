@@ -10,7 +10,8 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_callback'))
  
 // require helper file
 JLoader::register('CallBackHelper', dirname(__FILE__) . DS . 'helpers' . DS . 'callback.php');
- 
+
+  
 // import joomla controller library
 jimport('joomla.application.component.controller');
  

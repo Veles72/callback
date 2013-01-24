@@ -31,7 +31,7 @@ class CallBackViewCallBacks extends JView
 		$this->pagination = $pagination;
  
 		// Set the toolbar
-		$this->addToolBar();
+		$this->addToolBar($this->pagination->total);
  
 		// Display the template
 		parent::display($tpl);
@@ -43,10 +43,13 @@ class CallBackViewCallBacks extends JView
 	/**
 	 * Setting the toolbar
 	 */
-	protected function addToolBar() 
+	protected function addToolBar($total=null) 
 	{
 		$canDo = CallBackHelper::getActions();
-		JToolBarHelper::title(JText::_('COM_CALLBACK_MANAGER_CALLBACKS'), 'callback');
+                JToolBarHelper::title(JText::_('COM_CALLBACK_MANAGER_CALLBACKS').
+                        //Reflect number of items in title!
+                        ($total?' <span style="font-size: 0.5em; vertical-align: middle;">('.$total.')</span>':'')
+                        , 'callback');
 		if ($canDo->get('core.create')) 
 		{
 			JToolBarHelper::addNew('callback.add', 'JTOOLBAR_NEW');

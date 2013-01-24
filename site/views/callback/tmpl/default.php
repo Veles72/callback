@@ -16,6 +16,23 @@ $action = JROUTE::_(JURI::base()."index.php");
 jQuery(document).ready(function($){
    $.mask.definitions['#']='[9]';  
    $("#callback_phone").mask("+7(#99) 999-99-99");
+   $('#callback_form').submit(function(e){
+//       e.preventDefault();
+       var val_callback_name = $('#callback_name').val();
+       var val_callback_phone = $('#callback_phone').val();
+       if (val_callback_name==null || val_callback_name=='')
+        {
+            $('#callback_name').css('border','1px red solid');
+            alert("<?=JTEXT::_('COM_CALLBACK_USERNAME_EMPTY')?>");
+            return false;
+        }
+       if (val_callback_phone.length != 17)
+        {
+            $('#callback_phone').css('border','1px red solid');
+            alert("<?=JTEXT::_('COM_CALLBACK_PHONE_EMPTY')?>");
+            return false;
+        }
+   });
 });
 </script>
 <form id="callback_form" action="<?=$action?>" method="post">
